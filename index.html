@@ -12,6 +12,20 @@
       <p>Built with HTML,CSS,Javascript and ofcourse-lots of hardwork</p>
     </header>
     <main>
+      <aside>
+        <h2>Choose Your Name</h2>
+        <form>
+          <div>
+            <label for="playername">Player Name</label>
+            <input type="text" name="username" id="playername" />
+
+            <div>
+              <button type="button">Cancel</button>
+              <button type="submit"></button>
+            </div>
+          </div>
+        </form>
+      </aside>
       <section id="game-configuration">
         <ol>
           <li>
@@ -19,6 +33,7 @@
               <h2>Player 1</h2>
               <h3>Player Name</h3>
               <p>X</p>
+              <button>Edit</button>
             </article>
           </li>
           <li>
@@ -26,9 +41,11 @@
               <h2>Player 2</h2>
               <h3>Player Name</h3>
               <p>O</p>
+              <button>Edit</button>
             </article>
           </li>
         </ol>
+        <button>Start New Game</button>
       </section>
       <section id="active-game"></section>
     </main>
