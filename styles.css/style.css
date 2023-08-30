@@ -3,6 +3,7 @@ body {
     font-family: 'Phudu', cursive;
     color: rgb(44, 44, 44);
     background-color: rgb(247, 240, 247);
+    font-weight: 1000;
 }
 
 #main-header {
@@ -27,4 +28,16 @@ body {
     background-color: transparent;
     border-color: transparent;
     color: rgb(140, 0, 255);
+}
+
+.btn:hover {
+    background-color: rgb(79, 10, 190);
+    border-color: rgb(79, 10, 190);
+
+
+}
+
+.btn-alt:hover {
+    background-color: rgb(210, 204, 215);
+    border-color: transparent;
 }
