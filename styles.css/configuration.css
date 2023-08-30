@@ -55,3 +55,9 @@
     font-size: 1rem;
     margin: 0.5rem 0;
 }
+
+.player-symbol {
+    margin: auto;
+    font-size: 1.5rem;
+    color: rgb(47, 4, 82);
+}
