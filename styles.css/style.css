@@ -1,4 +1,14 @@
 body {
     margin: 0;
     font-family: 'Phudu', cursive;
+    color: rgb(44, 44, 44);
+    background-color: rgb(247, 240, 247);
+}
+
+#main-header {
+    background-color: rgb(144, 0, 255);
+    color: white;
+    padding: 2rem 5%;
+    text-align: center;
+
 }
