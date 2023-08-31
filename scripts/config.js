@@ -10,13 +10,15 @@ function closePlyerConfig() {
 
 function savePlayerConfig(event) {
   event.preventDefault();
+
   const formData = new FormData(event.target);
   const enteredPlayername = formData.get("username").trim();
   console.log(enteredPlayername);
+  console.log(event.target.firstElementChild);
 
   if (!enteredPlayername) {
     errorOutputElement.textContent = "Please Enter a valid name!";
-    event.target.firstElementChild.classlist.add("error");
+    event.target.firstElementChild.classList.add("error");
     return;
   }
 }
