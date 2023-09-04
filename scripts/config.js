@@ -40,6 +40,6 @@ function savePlayerConfig(event) {
   //   players[1].name = enteredPlayername;
   // }
   //or
-  players[editedPlayer].name = enteredPlayername;
+  players[editedPlayer - 1].name = enteredPlayername;
   closePlyerConfig();
 }
