@@ -6,7 +6,7 @@ const gameData = [
 
 let editedPlayer = 0;
 let activePlayer = 0;
-
+let currentRound = 1;
 const players = [
   {
     name: "",
@@ -34,6 +34,7 @@ const gameAreaElement = document.querySelector("#active-game");
 const gameFieldElements = document.querySelectorAll("#game-board li");
 const gameBoardElement = document.getElementById("game-board");
 const activePlayerNameElement = document.getElementById("active-player-name");
+const gameOverElement = document.getElementById("game-over");
 
 editPlayer1ButtonElement.addEventListener("click", openPlayerConfig);
 editPlayer2ButtonElement.addEventListener("click", openPlayerConfig);

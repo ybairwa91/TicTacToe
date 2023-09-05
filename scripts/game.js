@@ -1,3 +1,22 @@
+function resetGamestatus() {
+  activePlayer = 0;
+  currentRound = 1;
+  gameOverElement.firstElementChild.innerHTML =
+    'You won,<span id="winner-game">PLAYER NAME</span>!';
+  gameOverElement.style.display = "none";
+
+  let gameBoardIndex=0;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      gameData([i][j]) = 0;
+      const gameBoardItemElement=gameBoardElement.children[gameBoardIndex]
+      gameBoardItemElement.textContent="";
+      gameBoardItemElement.classList.remove('disabled')
+      gameBoardIndex++;
+    }
+  }
+}
+
 function startNewGame() {
   if (players[0].name === "" || players[1].name === "") {
     alert("Please set custom player names for both players");
@@ -34,28 +53,66 @@ function selectGameField(event) {
   selectedField.classList.add("disabled");
 
   gameData[selectedRow][selectedColumn] = activePlayer + 1;
-  console.log(gameData);
-
+  // console.log(gameData);
+  const winnderId = checkForGameOver();
+  if (winnderId !== 0) {
+    endGame(winnderId);
+  }
+  console.log(winnderId);
+  currentRound++;
   switchPlayer();
 }
 
 function checkForGameOver() {
+  for (let i = 0; i < 3; i++) {
+    if (
+      gameData[i][0] > 0 &&
+      gameData[i][0] === gameData[i][1] &&
+      gameData[i][1] === gameData[i][2]
+    )
+      return gameData[i][0];
+  }
+
+  //checking for columns
+  for (let i = 0; i < 3; i++) {
+    if (
+      gameData[0][i] > 0 &&
+      gameData[0][i] === gameData[1][i] &&
+      gameData[0][i] === gameData[2][i]
+    )
+      return gameData[0][i];
+  }
+  //diagonal:top left to bottom right
   if (
     gameData[0][0] > 0 &&
-    gameData[0][0] === gameData[0][1] &&
-    gameData[0][1] === gameData[0][2]
-  )
+    gameData[0][0] === gameData[1][1] &&
+    gameData[1][1] === gameData[2][2]
+  ) {
     return gameData[0][0];
-  if (
-    gameData[1][0] > 0 &&
-    gameData[1][0] === gameData[1][1] &&
-    gameData[1][1] === gameData[1][2]
-  )
-    return gameData[1][0];
+  }
+
+  //diagonal:top right to bottom left
   if (
     gameData[2][0] > 0 &&
-    gameData[2][0] === gameData[2][1] &&
-    gameData[2][1] === gameData[1][2]
-  )
+    gameData[2][0] === gameData[1][1] &&
+    gameData[1][1] === gameData[0][2]
+  ) {
     return gameData[2][0];
+  }
+
+  if (currentRound === 9) {
+    return -1;
+  }
+  return 0;
+}
+
+function endGame(winnderId) {
+  gameOverElement.style.display = "block";
+  if (winnderId > 0) {
+    const winnerName = players[winnderId - 1].name;
+    gameOverElement.firstElementChild.firstElementChild.textContent =
+      winnerName;
+  } else {
+    gameOverElement.firstElementChild.textContent = "It's a draw";
+  }
 }
